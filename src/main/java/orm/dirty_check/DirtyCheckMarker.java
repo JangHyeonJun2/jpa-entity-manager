@@ -12,10 +12,18 @@ public class DirtyCheckMarker<E> {
     private final TableEntity<E> snapshotEntity;
 
     public DirtyCheckMarker(TableEntity<E> entity, TableEntity<E> snapshotEntity) {
-        this.entity = entity;
-        this.snapshotEntity = snapshotEntity;
         throwIfNotSameEntity(entity, snapshotEntity);
         throwIfIdNotSame(entity, snapshotEntity);
+        this.entity = entity;
+        this.snapshotEntity = snapshotEntity;
+    }
+
+    public DirtyCheckMarker(E entity, E snapshotEntity) {
+        this(new TableEntity<>(entity), new TableEntity<>(snapshotEntity));
+    }
+
+    public TableEntity<E> getEntity() {
+        return entity;
     }
 
     /**

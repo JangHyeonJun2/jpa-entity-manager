@@ -3,6 +3,7 @@ package orm.dsl;
 import jdbc.JdbcTemplate;
 import jdbc.RowMapper;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class QueryRunner {
