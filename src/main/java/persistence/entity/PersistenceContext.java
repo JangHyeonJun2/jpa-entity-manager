@@ -5,16 +5,20 @@ import java.util.Set;
 
 public interface PersistenceContext {
 
-    <T> T find(Class<T> entityClass, Object primaryKey);
+    <T> T getEntity(Class<T> entityClass, Object primaryKey);
 
-    void persist(Object entity);
+    void attachEntity(Object entity);
 
-    void remove(Object entity);
-
-    void update(Object entity) throws IllegalAccessException;
+    void detachEntity(Object entity);
 
     Set<Object> getPendingEntities();
 
     Collection<Object> getPersistedEntities();
+
+    void captureDatabaseSnapshot(Object entity);
+
+    Object getDatabaseSnapshot(Object entity);
+
+    void reset();
 
 }

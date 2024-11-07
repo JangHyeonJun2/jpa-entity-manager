@@ -6,6 +6,9 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ColumnValues<T> {
 
@@ -17,6 +20,26 @@ public class ColumnValues<T> {
 
     public List<ColumnValue> getValues() {
         return new ArrayList<>(columnValues);
+    }
+
+    public List<ColumnValue> getValuesByColumns(List<String> columns) {
+        return columnValues.stream()
+            .filter(columnValue -> columns.contains(columnValue.getColumnNameForValue()))
+            .collect(Collectors.toList());
+    }
+
+    public List<String> findDifferentColumns(ColumnValues<T> columnValues) {
+        List<ColumnValue> o1 = this.columnValues;
+        List<ColumnValue> o2 = columnValues.getValues();
+
+        return IntStream.range(0, o1.size())
+            .filter(i -> !isEqual(o1.get(i), o2.get(i)))
+            .mapToObj(i -> o1.get(i).getColumnNameForValue())
+            .collect(Collectors.toList());
+    }
+
+    private boolean isEqual(ColumnValue o1, ColumnValue o2) {
+        return Objects.equals(o1.toStringValue(), o2.toStringValue());
     }
 
     private List<ColumnValue> getColumnValues(T entity) throws IllegalAccessException {
