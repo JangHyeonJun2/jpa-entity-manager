@@ -17,7 +17,7 @@ public class DeleteQueryBuilder {
         this.queryString = new StringBuilder();
     }
 
-    public static DeleteQueryBuilder builder(Dialect dialect) {
+    public static DeleteQueryBuilder builder() {
         return new DeleteQueryBuilder();
     }
 

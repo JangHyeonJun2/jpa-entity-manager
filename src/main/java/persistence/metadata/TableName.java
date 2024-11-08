@@ -4,7 +4,8 @@ import common.ErrorCode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import static common.AnnotationValidation.*;
+import static persistence.validation.AnnotationValidation.*;
+
 
 public record TableName(String name) {
     public TableName(Class<?> clazz) {

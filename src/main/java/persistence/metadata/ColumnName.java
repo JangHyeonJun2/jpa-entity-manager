@@ -4,8 +4,8 @@ import jakarta.persistence.Column;
 
 import java.lang.reflect.Field;
 
-import static common.AnnotationValidation.isNotBlank;
-import static common.AnnotationValidation.isPresent;
+import static persistence.validation.AnnotationValidation.isNotBlank;
+import static persistence.validation.AnnotationValidation.isPresent;
 
 
 public record ColumnName(String name) {

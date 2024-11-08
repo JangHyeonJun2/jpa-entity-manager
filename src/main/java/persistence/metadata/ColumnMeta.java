@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 
 import java.lang.reflect.Field;
 
-import static common.AnnotationValidation.isNotPresent;
+import static persistence.validation.AnnotationValidation.isNotPresent;
 
 public record ColumnMeta(int type,
                          String name,
