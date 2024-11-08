@@ -19,7 +19,7 @@ public class InsertQueryBuilder {
         this.queryString = new StringBuilder();
     }
 
-    public static InsertQueryBuilder builder(Dialect dialect) {
+    public static InsertQueryBuilder builder() {
         return new InsertQueryBuilder();
     }
 
