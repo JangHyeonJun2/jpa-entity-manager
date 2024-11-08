@@ -8,7 +8,7 @@ import persistence.metadata.TableName;
 import java.util.Arrays;
 import java.util.List;
 
-import static common.AnnotationValidation.isNotPresent;
+import static persistence.validation.AnnotationValidation.isNotPresent;
 
 public record SelectColumnName(TableName tableName, List<ColumnName> columnNames) {
     public SelectColumnName(Class<?> clazz) {

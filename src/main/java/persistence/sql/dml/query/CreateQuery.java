@@ -8,8 +8,8 @@ import persistence.metadata.TableName;
 import java.util.Arrays;
 import java.util.List;
 
-import static common.AnnotationValidation.notIdentifier;
-import static common.AnnotationValidation.notPredicate;
+import static persistence.validation.AnnotationValidation.notIdentifier;
+import static persistence.validation.AnnotationValidation.notPredicate;
 
 public record CreateQuery(TableName tableName,
                           List<ColumnMeta> columns,

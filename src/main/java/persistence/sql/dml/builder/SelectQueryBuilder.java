@@ -17,12 +17,12 @@ public class SelectQueryBuilder {
 
     private final StringBuilder queryString;
 
-    public SelectQueryBuilder(Dialect dialect) {
+    public SelectQueryBuilder() {
         this.queryString = new StringBuilder();
     }
 
     public static SelectQueryBuilder builder(Dialect dialect) {
-        return new SelectQueryBuilder(dialect);
+        return new SelectQueryBuilder();
     }
 
     public String build() {

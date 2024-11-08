@@ -13,16 +13,14 @@ public class InsertQueryBuilder {
     private static final String INSERT_INTO = "insert into";
     private static final String VALUES = "values";
 
-    private final Dialect dialect;
     private final StringBuilder queryString;
 
-    public InsertQueryBuilder(Dialect dialect) {
-        this.dialect = dialect;
+    public InsertQueryBuilder() {
         this.queryString = new StringBuilder();
     }
 
     public static InsertQueryBuilder builder(Dialect dialect) {
-        return new InsertQueryBuilder(dialect);
+        return new InsertQueryBuilder();
     }
 
     public String build() {

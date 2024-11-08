@@ -11,16 +11,14 @@ import static persistence.clause.QueryClause.whereClause;
 public class DeleteQueryBuilder {
     private static final String DELETE_FROM = "delete from";
 
-    private final Dialect dialect;
     private final StringBuilder queryString;
 
-    private DeleteQueryBuilder(Dialect dialect) {
-        this.dialect = dialect;
+    private DeleteQueryBuilder() {
         this.queryString = new StringBuilder();
     }
 
     public static DeleteQueryBuilder builder(Dialect dialect) {
-        return new DeleteQueryBuilder(dialect);
+        return new DeleteQueryBuilder();
     }
 
     public String build() {

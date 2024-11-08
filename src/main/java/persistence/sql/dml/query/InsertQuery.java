@@ -7,8 +7,7 @@ import persistence.metadata.TableName;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static common.AnnotationValidation.isNotPresent;
+import static persistence.validation.AnnotationValidation.isNotPresent;
 
 public record InsertQuery(TableName tableName,
                           List<FieldValue> columns) {
