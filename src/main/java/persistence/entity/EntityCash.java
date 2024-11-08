@@ -1,4 +1,4 @@
-package entity;
+package persistence.entity;
 
 import common.ErrorCode;
 import jakarta.persistence.Id;

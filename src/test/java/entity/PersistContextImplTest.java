@@ -3,6 +3,8 @@ package entity;
 import domain.Person;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import persistence.entity.PersistContext;
+import persistence.entity.PersistContextImpl;
 
 import static entity.fixtures.PersonFixtures.완벽한_사람_객체;
 import static org.junit.jupiter.api.Assertions.*;
