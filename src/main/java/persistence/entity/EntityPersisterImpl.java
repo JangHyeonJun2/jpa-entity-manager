@@ -8,9 +8,17 @@ import persistence.sql.dml.query.DeleteQuery;
 import persistence.sql.dml.query.InsertQuery;
 import persistence.sql.dml.query.UpdateQuery;
 
+import java.sql.Connection;
+
 public class EntityPersisterImpl implements EntityPersister{
+    private final JdbcTemplate jdbcTemplate;
+
+    public EntityPersisterImpl(Connection conn) {
+        this.jdbcTemplate = new JdbcTemplate(conn);
+    }
+
     @Override
-    public <T> void insert(T entity, JdbcTemplate jdbcTemplate) {
+    public <T> void insert(T entity) {
         InsertQuery query = new InsertQuery(entity);
         jdbcTemplate.execute(InsertQueryBuilder.builder()
                 .insert(query.tableName(), query.columns())
@@ -19,7 +27,7 @@ public class EntityPersisterImpl implements EntityPersister{
     }
 
     @Override
-    public <T> void update(T entity, JdbcTemplate jdbcTemplate) {
+    public <T> void update(T entity) {
         UpdateQuery query = new UpdateQuery(entity);
         jdbcTemplate.execute(UpdateQueryBuilder.builder()
                 .update(query.tableName())
@@ -28,7 +36,7 @@ public class EntityPersisterImpl implements EntityPersister{
     }
 
     @Override
-    public <T> void delete(T entity, JdbcTemplate jdbcTemplate) {
+    public <T> void delete(T entity) {
         DeleteQuery query = new DeleteQuery(entity.getClass());
         jdbcTemplate.execute(DeleteQueryBuilder.builder()
                 .delete(query.tableName())
