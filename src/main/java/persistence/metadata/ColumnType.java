@@ -1,9 +1,12 @@
 package persistence.metadata;
 
 import common.ErrorCode;
+import jakarta.persistence.GenerationType;
 
 import java.sql.Types;
 import java.util.Arrays;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 public enum ColumnType {
 
@@ -38,6 +41,22 @@ public enum ColumnType {
 
     public static boolean isVarcharType(int sqlType) {
         return Types.VARCHAR == sqlType;
+    }
+
+    public static String getColumnTYpe(int type) {
+        return switch(type) {
+            case Types.BIGINT -> "bigint";
+            case Types.VARCHAR -> "varchar";
+            case Types.INTEGER -> "integer";
+            default -> throw new IllegalArgumentException(ErrorCode.NOT_ALLOWED_DATATYPE.getErrorMsg());
+        };
+    }
+
+    public static String getIdentifierGenerationType(GenerationType generationType) {
+        return switch (generationType) {
+            case IDENTITY -> "auto_increment";
+            default -> throw new IllegalArgumentException(ErrorCode.NOT_ALLOWED_DATATYPE.getErrorMsg());
+        };
     }
 
 }
