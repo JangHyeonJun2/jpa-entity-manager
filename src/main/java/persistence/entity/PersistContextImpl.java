@@ -5,17 +5,17 @@ import java.util.Map;
 import java.util.Optional;
 
 public class PersistContextImpl implements PersistContext{
-    private final Map<EntityCash, Object> context = new HashMap<>();
+    private final Map<EntityCache, Object> context = new HashMap<>();
 
     @Override
     public <T, ID> Optional<T> getEntity(ID id, Class<T> entityClass) {
-        EntityCash entityCash = new EntityCash(id, entityClass);
-        return Optional.ofNullable(entityClass.cast(context.get(entityCash)));
+        EntityCache entityCache = new EntityCache(id, entityClass);
+        return Optional.ofNullable(entityClass.cast(context.get(entityCache)));
     }
 
     @Override
     public void addEntity(Object entity) {
-        EntityCash entityCash = new EntityCash(entity);
-        context.put(entityCash, entity);
+        EntityCache entityCache = new EntityCache(entity);
+        context.put(entityCache, entity);
     }
 }

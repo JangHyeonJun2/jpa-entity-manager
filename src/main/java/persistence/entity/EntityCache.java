@@ -7,8 +7,8 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Objects;
 
-public record EntityCash(Object key, Class<?> entityType) {
-    public EntityCash(Object entity) {
+public record EntityCache(Object key, Class<?> entityType) {
+    public EntityCache(Object entity) {
         this(getKey(entity), entity.getClass());
     }
 
@@ -30,10 +30,10 @@ public record EntityCash(Object key, Class<?> entityType) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof EntityCash entityCash)) {
+        if (!(o instanceof EntityCache entityCache)) {
             return false;
         }
-        return Objects.equals(key, entityCash.key) && Objects.equals(entityType, entityCash.entityType);
+        return Objects.equals(key, entityCache.key) && Objects.equals(entityType, entityCache.entityType);
     }
 
     @Override
