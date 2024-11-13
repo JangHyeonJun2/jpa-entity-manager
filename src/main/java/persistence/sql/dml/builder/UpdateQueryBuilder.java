@@ -13,6 +13,7 @@ import static persistence.clause.QueryClause.whereClause;
 public class UpdateQueryBuilder {
     private static final String UPDATE = "update";
     private static final String SET = "set";
+    private static final String AND_COMMA = ", ";
 
     private final StringBuilder queryString;
 
@@ -51,6 +52,6 @@ public class UpdateQueryBuilder {
     private String setClause(List<FieldValue> fields) {
         return fields.stream()
                 .map(field -> field.columnName().name() + " = " + field.fieldValueHandleToString())
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(AND_COMMA));
     }
 }

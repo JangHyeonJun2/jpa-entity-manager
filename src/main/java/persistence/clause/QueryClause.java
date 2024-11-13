@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 public class QueryClause {
     private static final String WHERE = "where";
     private static final String AND = "and";
+    private static final String AND_COMMA = ", ";
 
     public static String columnClause(List<ColumnName> columnNames) {
         return columnNames.stream()
                 .map(ColumnName::name)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(AND_COMMA));
     }
 
     public static String whereClause(List<WhereCondition> whereConditions) {

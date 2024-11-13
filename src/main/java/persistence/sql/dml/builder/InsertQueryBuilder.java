@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class InsertQueryBuilder {
     private static final String INSERT_INTO = "insert into";
     private static final String VALUES = "values";
+    private static final String AND_COMMA = ", ";
 
     private final StringBuilder queryString;
 
@@ -52,7 +53,7 @@ public class InsertQueryBuilder {
         return " (" +
                 columns.stream()
                         .map(FieldValue::fieldValueHandleToString)
-                        .collect(Collectors.joining(", ")) +
+                        .collect(Collectors.joining(AND_COMMA)) +
                 ")";
     }
 }
